@@ -40,7 +40,7 @@ public class PropertyRegister {
     /**
      * This method lists all the properties in the register
      */
-    public void listAllProperties() {
+    /*public void listAllProperties() {
         if (properties.size() > 0) {
             for (Property property : properties) {
                 property.printProperty();
@@ -48,6 +48,14 @@ public class PropertyRegister {
         } else {
             System.out.println("There are no properties in the register");
         }
+    }*/
+    /**
+     * This method lists all the properties in the register
+     */
+    public void listAllProperties(){
+        properties
+                .stream()
+                .forEach(s -> s.printProperty());
     }
 
     /**
