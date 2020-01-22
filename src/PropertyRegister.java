@@ -93,13 +93,26 @@ public class PropertyRegister {
             }
         }
     }
-
     /**
      * This method searches for a property using its ID.
      *
      * @param the user inserts the property's ID.
      */
     public void findProperty(String searchString) {
+        properties
+                .stream()
+                .map(p -> p.getID().toLowerCase().trim().contains(searchString.trim().toLowerCase()))
+                .collect(Collectors.toList());
+        for (Property property : properties) {
+            property.printProperty();
+        }
+    }
+    /**
+     * This method searches for a property using its ID.
+     *
+     * @param the user inserts the property's ID.
+     */
+    /*public void findProperty(String searchString) {
         for (Property property : properties) {
             if (property.getID().toLowerCase().trim().contains(searchString.trim().toLowerCase())) {
                 property.printProperty();
@@ -108,7 +121,7 @@ public class PropertyRegister {
                         + " in the register.");
             }
         }
-    }
+    }*/
 
     /**
      * This method calculates the average area of all the properties
