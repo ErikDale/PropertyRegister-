@@ -113,14 +113,24 @@ public class PropertyRegister {
     /**
      * This method calculates the average area of all the properties
      */
-    public double calculateAverage() {
+    public double calculateAverage(){
+        return properties
+                .stream()
+                .map(s -> s.getArea())
+                .reduce(0.0, (total, count) -> total + count);
+
+    }
+    /**
+     * This method calculates the average area of all the properties
+     */
+    /*public double calculateAverage() {
         double average = 0;
         for (Property property : properties) {
             average = average + property.getArea();
         }
         double averageArea = (average / numberOfProperties());
         return averageArea;
-    }
+    }*/
 
     /**
      * This method searches for the properties with a specific
