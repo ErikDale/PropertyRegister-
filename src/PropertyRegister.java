@@ -49,10 +49,11 @@ public class PropertyRegister {
             System.out.println("There are no properties in the register");
         }
     }*/
+
     /**
      * This method lists all the properties in the register
      */
-    public void listAllProperties(){
+    public void listAllProperties() {
         properties
                 .stream()
                 .forEach(s -> s.printProperty());
@@ -80,7 +81,7 @@ public class PropertyRegister {
      *
      * @param the parameter is the property's ID that the user inserts
      */
-    public void deleteProperty(String searchString) {
+    /*public void deleteProperty(String searchString) {
         for (int i = 0; i < properties.size(); i++) {
             Property property = properties.get(i);
             if (property.getID().trim().contains(searchString.trim())) {
@@ -92,7 +93,34 @@ public class PropertyRegister {
                         + " in the register.");
             }
         }
+    }*/
+
+    /**
+     * This method deletes a specific property in the register
+     *
+     * @param the parameter is the property's ID that the user inserts
+     */
+    public void deleteProperty(String searchString) {
+        properties
+                .stream()
+                .map(n -> n.getID().trim().contains(searchString.trim()))
+                .collect(Collectors.toList());
+
+        try {
+            for (Property property : properties) {
+                properties.remove(property);
+                System.out.println("The property with ID: " +
+                        property.getID() + " has been removed.");
+            }
+        }
+        catch(java.util.ConcurrentModificationException exception){
+            for (Property property : properties) {
+            System.out.println("The property with ID: " +
+                    property.getID() + " has been removed.");
+            }
+        }
     }
+
     /**
      * This method searches for a property using its ID.
      *
@@ -126,7 +154,7 @@ public class PropertyRegister {
     /**
      * This method calculates the average area of all the properties
      */
-    public double calculateAverage(){
+    public double calculateAverage() {
         return properties
                 .stream()
                 .map(s -> s.getArea())
