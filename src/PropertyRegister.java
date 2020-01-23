@@ -29,9 +29,9 @@ public class PropertyRegister {
      * @param the parameters are the fields of the property-class
      */
     public void addProperty(int municipalityNumber, String municipalityName,
-                            int lotNumber, int sectionNumber, String name, double area, String nameOfOwner) {
+                            int lotNumber, int sectionNumber, String name, double area, String nameOfOwner, int inputYear) {
         properties.add(new Property(municipalityNumber, municipalityName,
-                lotNumber, sectionNumber, name, area, nameOfOwner));
+                lotNumber, sectionNumber, name, area, nameOfOwner, inputYear));
 
         System.out.println("A property with ID: " + municipalityNumber +
                 "-" + lotNumber + "/" + sectionNumber + " has just been added.");
